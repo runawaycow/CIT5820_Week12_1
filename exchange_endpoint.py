@@ -17,6 +17,7 @@ Base.metadata.bind = engine
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
 fields = ['sender_pk','receiver_pk','buy_currency','sell_currency','buy_amount','sell_amount','creator_id']
+
 app = Flask(__name__)
 
 @app.before_request
@@ -87,11 +88,11 @@ def fill_order(order,txes=[]):
                     print('2:Child order added - 2')
                 else:
                     print('5: Child order NOT created - 5')
-                    print(existing_order.buy_amount)
-                    print(order_obj.sell_amount)
-                    print(order_obj.buy_amount)
-                    print(existing_order.sell_amount)
-                    print('##########')
+                    #print(existing_order.buy_amount)
+                    #print(order_obj.sell_amount)
+                    #print(order_obj.buy_amount)
+                    #print(existing_order.sell_amount)
+                    #print('##########')
 
                 break
             txes.append(order_obj)
@@ -213,6 +214,7 @@ def order_book():
     orders = g.session.query(Order).all()
 
     # Convert orders to a list of dictionaries
+    
     result = []
     for order in orders:
         result.append({'sender_pk': order.sender_pk,
@@ -222,8 +224,8 @@ def order_book():
                        'buy_amount': order.buy_amount,
                        'sell_amount': order.sell_amount,
                        'signature': order.signature})
-    print (result)
-    return jsonify(result)
+
+    return jsonify({'data': result})
 
 if __name__ == '__main__':
     app.run(port='5002')
