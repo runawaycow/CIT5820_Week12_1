@@ -47,8 +47,8 @@ def fill_order(order,txes=[]):
         order_obj = order        
         #session.add(order_obj)
         #session.commit()
-        #print('Here!!!')
-        for existing_order in session.query(Order).all():
+        print('Here!!!')
+        for existing_order in g.session.query(Order).all():
             if order_obj.sell_amount * existing_order.sell_amount >= order_obj.buy_amount * existing_order.buy_amount and existing_order.buy_currency == order_obj.sell_currency and existing_order.sell_currency == order_obj.buy_currency and existing_order.filled == None:
                 order_obj.filled = datetime.now()
                 existing_order.filled = datetime.now()
