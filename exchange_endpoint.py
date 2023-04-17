@@ -15,6 +15,7 @@ from models import Base, Order, Log
 engine = create_engine('sqlite:///orders.db')
 Base.metadata.bind = engine
 DBSession = sessionmaker(bind=engine)
+session = DBSession()
 
 app = Flask(__name__)
 
