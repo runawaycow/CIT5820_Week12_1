@@ -16,7 +16,7 @@ engine = create_engine('sqlite:///orders.db')
 Base.metadata.bind = engine
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
-
+fields = ['sender_pk','receiver_pk','buy_currency','sell_currency','buy_amount','sell_amount','creator_id']
 app = Flask(__name__)
 
 @app.before_request
@@ -222,7 +222,7 @@ def order_book():
                        'buy_amount': order.buy_amount,
                        'sell_amount': order.sell_amount,
                        'signature': order.signature})
-
+    print (result)
     return jsonify(result)
 
 if __name__ == '__main__':
