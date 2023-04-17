@@ -74,8 +74,7 @@ def fill_order(order,txes=[]):
                     order_r['buy_amount'] = existing_order['buy_amount']-order_obj['sell_amount']
                     order_r['sell_amount'] = existing_order['sell_amount']-order_obj['buy_amount']
                     session.add(order_r)
-                    session.add(order_obj)                break
-            
+                    session.add(order_obj)                            
             g.session.commit()
             txes.append(order_obj)
             txes.append(existing_order)
