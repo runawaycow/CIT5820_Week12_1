@@ -45,8 +45,8 @@ def fill_order(order,txes=[]):
     #Your code here
     #if all(key in order for key in ['sender_pk','buy_amount','sell_amount', 'receiver_pk', 'buy_currency', 'sell_currency']):
         order_obj = order        
-        session.add(order_obj)
-        session.commit()
+        #session.add(order_obj)
+        #session.commit()
         #print('Here!!!')
         for existing_order in session.query(Order).all():
             if order_obj.sell_amount * existing_order.sell_amount >= order_obj.buy_amount * existing_order.buy_amount and existing_order.buy_currency == order_obj.sell_currency and existing_order.sell_currency == order_obj.buy_currency and existing_order.filled == None:
