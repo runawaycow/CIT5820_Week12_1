@@ -79,7 +79,7 @@ def fill_order(order,txes=[]):
             txes.append(order_obj)
             txes.append(existing_order)
             break
-    return txes
+        return txes
   
 def log_message(d):
     # Takes input dictionary d and writes it to the Log table
